@@ -1,0 +1,24 @@
+# Copy to rules.yaml and edit. One line per pattern.
+# cpanel_url / cpanel_user may be set here or via CPANEL_URL / CPANEL_USER.
+# The API token is read ONLY from the CPANEL_API_TOKEN environment variable.
+mailboxes: [info@example.com, admin@example.com]
+filter_prefix: custom spam
+spam_folder: .spam
+allow_domains:      # From contains => stop processing (never moved)
+  - example.com
+  - bank.example
+  - broker.example
+  - "@agency.example.gov"
+  - friend@example.com
+from_contains:      # From contains => spam folder
+  - win-a-prize.example
+  - bulk-sender.example
+  - offers.example
+  - spam-sender.example
+subject_contains:
+  - Example spam phrase
+  - Win a prize
+  - Limited time offer
+  - Another example phrase
+auth_fail_patterns: ["spf=fail", "dkim=fail"]
+chunk: 6
